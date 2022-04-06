@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <title>Index Page</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
 </head>
 <body>
     
@@ -50,7 +52,16 @@
 
         <section>
             <div>
-                <p>Feed</p>
+                <h2>Chuck Norris Feed</h2>
+                <p id="chuckFeed"></p>
+                <p id="requestAction"></p>
+            </div>
+        </section>
+
+        <section>
+            <div>
+                <h2>Breaking News Feed</h2>
+                <p id="newsFeed">Breaking News Feed</p>
             </div>
         </section>
 
@@ -61,6 +72,7 @@
             <p>Footer</p>
         </div>
     </footer>
-
+<script src="chucknorrisfeedajax.js"></script>
+<!-- <script src="newsfeedjsvanillia.js"></script> -->
 </body>
 </html>
