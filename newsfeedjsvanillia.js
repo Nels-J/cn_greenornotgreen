@@ -1,40 +1,52 @@
-const NEWSAPI_URL = 'https://newsapi.org/v2/top-headlines?' +
-           'country=fr&' +
-           'category=technology&' +
-           'pageSize=5&' +
-           'page=1&' +
-           'apiKey=dbbebdcc03aa4f5a9cb8cc2f1a419bb0';
+const NEWSAPI_URL =
+  "https://newsapi.org/v2/top-headlines?" +
+  "country=fr&" +
+  "category=technology&" +
+  "pageSize=5&" +
+  "page=1&" +
+  "apiKey=dbbebdcc03aa4f5a9cb8cc2f1a419bb0";
 
 // uncomment line below & comment lines above to test error message
 // const NEWSAPI_URL = 'https://newsapi.org/v2/top-headlines?';
 
-let req = new Request(NEWSAPI_URL);
+const req = new Request(NEWSAPI_URL);
 
 fetch(req)
-.then(response => response.json())
-.then(newsFeedObject => {
-    // si status = ok
-    if(newsFeedObject.status == 'ok'){
-        // création d'un element h3 qui renvoi le nom de la source de l'article 
-        let articleSourceName = document.createElement('p');
-        articleSourceName.innerText = `Source: ${newsFeedObject.articles[1].source.name}`
+  .then((response) => response.json())
+  .then((newsFeedObject) => {
+    // if status = ok
+    if (newsFeedObject.status == "ok") {
+      for (i = 0; i < 3; i++) {
+        // Grab needed data for each news for the news feed section
+        const articleTitle = document.createElement("h2"); // Create new h2 element to grab the article title
+        //articleTitle.innerText = `${newsFeedObject.articles[i].title}`;
+        articleTitle.innerText = newsFeedObject.articles[i].title;
 
-        let articleAuthorName = document.createElement('p');
-        articleAuthorName.innerText = `Author: ${newsFeedObject.articles[1].author}`
+        const articleDescription = document.createElement("p"); // Create new p element to grab the article content
+        articleDescription.innerText = newsFeedObject.articles[i].description;
 
-        let articleTitle = document.createElement('h2');
-        articleTitle.innerText = `Title: ${newsFeedObject.articles[1].title}`
+        const articleSourceName = document.createElement("p"); // Create new p element to grab the article source
+        articleSourceName.innerText = `Source: ${newsFeedObject.articles[i].source.name}`;
 
-        let articleDescription = document.createElement('p');
-        articleDescription.innerText = `Description: ${newsFeedObject.articles[1].description}`
+        const articleAuthorName = document.createElement("p"); // Create new p element to grab the author source
+        articleAuthorName.innerText = `Author: ${newsFeedObject.articles[i].author}`;
 
-        //injection dans le html
-         main.appendChild(articleTitle)
-         document.body.appendChild(articleDescription)
-         document.body.appendChild(articleSourceName)
-         document.body.appendChild(articleAuthorName)
-        
-    }else{
-        alert(newsFeedObject.message);
-    };
-});
+        // Send to the html the news content and structure
+
+        const sectionNews = document.createElement("section"); // Create new section element
+        document.querySelector("main").append(sectionNews); // Add the new section into body main of the html document
+        sectionNews.className = 'newsFeedSection';
+
+        const divNews = document.createElement("div"); // Create new div element
+        sectionNews.append(divNews); // Add the new div into body main section of the html document
+        divNews.className = 'newsFeed';
+
+        divNews.append(articleTitle);
+        divNews.append(articleDescription);
+        divNews.append(articleSourceName);
+        divNews.append(articleAuthorName);
+      }
+    } else {
+      alert(newsFeedObject.message);
+    }
+  });
