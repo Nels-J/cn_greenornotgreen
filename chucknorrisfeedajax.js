@@ -1,75 +1,63 @@
-const isDebugSession=true; // used when we want to render differently the prints, activating console.logs for example for debugging session 
+const isDebugSession = false; // used when we want to render differently the prints, activating console.logs for example for debugging session
 
-// Method $.ajax() and JQuery
-$(document).ready(function(){
-    
-    // request conf
-    $.ajax({
-    
-        // API URL request
-        url: "https://api.chucknorris.io/jokes/random",
+// Method $.ajax() from JQuery
+$(document).ready(function () {
+  // request conf
+  $.ajax({
+    // API URL request
+    url: "https://api.chucknorris.io/jokes/random",
 
-        // Method type of the request
-        method: "GET",
+    // Method type of the request
+    method: "GET",
 
-        // Response format required
-        dataType : "json",
-    })
+    // Response format required
+    dataType: "json",
+  })
 
     // If request work then the code below will run - the server response is given to the done() as an object
-    
-        /* for testing purpose the response can be converted as JSON string with stringify method then inserted into the html document.
-        
-            .done(function(response){
-                let data = JSON.stringify(response);
-                $("div#res").append(data);
-            })
-    */
-    
-    .done(function(response){
 
-        let onlyValue = response.value; // only one value requested
-        const sectChuck = document.querySelector('section');
-        const paragrahChuck = document.createElement('p');
-        paragrahChuck.textContent = onlyValue;
-        sectChuck.appendChild(paragrahChuck);
+    .done(function (response) {
+      const onlyValue = response.value; // grab only the value from the response object
 
-        //$("#chuckFeed").append(onlyValue);
+      const sectionChuck = document.createElement("section"); // Create new section element
+      document.querySelector("main").append(sectionChuck); // Add the new section into body main of html document
 
+      const divChuck = document.createElement("div"); // Create new div element nested on section element
+      sectionChuck.appendChild(divChuck); // Add the new div into body main section
+
+      const h2Chuck = document.createElement("h2"); // Create new h2 element nested on section div element
+      h2Chuck.innerText = "Chuck Norris Joke Feed";
+      divChuck.appendChild(h2Chuck); // Add the new h2 into body main section div
+
+      const paragrahChuck = document.createElement("p"); // Create new p element nested on section div
+      paragrahChuck.innerText = onlyValue;
+      divChuck.append(paragrahChuck); // Append p to body main section div
     })
 
     // In case the request fail - The error is passed to fail()
     // we can print the error details from the request
-    .fail(function(error){
-        let errorString = "Something went wrong, request fail." + "\n\nStatus Error: " + error.responseJSON.status + "\nError type: "+ error.responseJSON.error + "\nDetails: " + error.responseJSON.message
-        if (isDebugSession===true){
-            alert(errorString);
-        } else {
-            $("#chuckFeed").append(errorString);
-        }
+    .fail(function (error) {
+      let errorString =
+        "Something went wrong, request fail." +
+        "\n\nStatus Error: " +
+        error.responseJSON.status +
+        "\nError type: " +
+        error.responseJSON.error +
+        "\nDetails: " +
+        error.responseJSON.message;
+      if (isDebugSession === true) {
+        alert(errorString);
+      } else {
+        $("#chuckFeed").append(errorString);
+      }
     })
 
     // Code to execute even if the request fail or no
-    .always(function(){
-        if (isDebugSession===true){
-            console.log("Request made");
-        } else {
-            $("#requestAction").append("API query made");
-        }
-    })
+    .always(function () {
+      if (isDebugSession === true) {
+        console.log("Request made");
+      } else {
+        $("#requestAction").append("API query made");
+      }
+    });
 });
-
-// Method $.get() from ajax and jQuery
-// $(document).ready(function() { 
-    
-//        // GET from the url api then store the request answer on the response object
-//       $.get("https://api.chucknorris.io/jokes/random", function(response){ 
-               
-//           // store from the object only the content of the value key in the variable
-//           let onlyValue = response.value; // the dot mean in that object I wan't that content
-        
-//           //
-//           ($("#chuckFeed").text(onlyValue)); // set the text content
-        
-//     })
-// });
