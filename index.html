@@ -1,66 +1,60 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
     <title>Index Page</title>
-</head>
-<body>
-    
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
+  </head>
+  <body>
     <header>
-    
-        <div id="topnav">
-            <div>LOGO</div>
-            <div id="navlist">Nav</div>
-        </div>
-    
+      <div id="topnav">
+        <div>LOGO</div>
+        <div id="navlist">Nav</div>
+      </div>
     </header>
-    
+
     <main>
-        
-        <section>
-            <div>
-                <p>Carrousel</p>
-            </div>
-        </section>
-    
-        <section>
-            <div>
-                <p>What</p>
-            </div>
-        </section>
+      <section id="Carrousel">
+        <div>
+          <p>Carrousel</p>
+        </div>
+      </section>
 
-        <section>
-            <div>
-                <div>
-                    <form>
-                        <label for="search">Search:</label>
-                        <input type="search" id="search" name="search">
-                    </form>
-                </div>
-                <div>
-                    <p>
-                    Result of search
-                    </p>
-                </div>
-            </div>
-        </section>
+      <section id="What">
+        <div>
+          <p>What</p>
+        </div>
+      </section>
 
-        <section>
-            <div>
-                <p>Feed</p>
-            </div>
-        </section>
-
+      <section id="searchSection">
+        <div>
+          <div>
+            <form>
+              <label for="search">Search:</label>
+              <input type="search" id="search" name="search" />
+            </form>
+          </div>
+          <div>
+            <p>Result of search</p>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer>
-        <div>
-            <p>Footer</p>
-        </div>
+      <div>
+        <p>Footer</p>
+      </div>
     </footer>
-
-</body>
+    <script src="chucknorrisfeedajax.js"></script>
+    <script src="newsfeedjsvanillia.js"></script>
+  </body>
 </html>
