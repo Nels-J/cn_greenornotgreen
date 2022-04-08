@@ -5,22 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="dropdown.css" />
     <script
       src="https://code.jquery.com/jquery-3.6.0.js"
       integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
       crossorigin="anonymous"
     ></script>
+    <!-- Load an icon library -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <title>Index Page</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
   </head>
   <body>
     <header>
-      <div id="topnav">
-        <div>LOGO</div>
-        <div id="navlist">Nav</div>
+      <div class="navbar">
+        <a href="#LOGO"><i class="fa fa-fw fa-home"></i> Logo</a>
+        <div class="dropdown">
+          <button class="dropbtn" onclick="toggleMenu()">
+            Menu
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content" id="myDropdown">
+            <a href="#"><i class="fa fa-fw fa-feed"></i> Feed</a>
+            <a href="#"><i class="fa fa-fw fa-photo"></i> Gallery</a>
+            <a href="#"><i class="fa fa-fw fa-gamepad"></i> Games</a>
+          </div>
+        </div>
       </div>
     </header>
-
     <main>
       <section id="Carrousel">
         <div>
@@ -48,13 +63,13 @@
         </div>
       </section>
     </main>
-
     <footer>
       <div>
         <p>Footer</p>
       </div>
     </footer>
-    <script src="chucknorrisfeedajax.js"></script>
+    <script src="dropdown.js"></script>
     <script src="newsfeedjsvanillia.js"></script>
+    <script src="chucknorrisfeedajax.js"></script>
   </body>
 </html>
