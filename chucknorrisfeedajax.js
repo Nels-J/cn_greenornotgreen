@@ -19,8 +19,7 @@ $(document).ready(function () {
     .done(function (response) {
       const onlyValue = response.value; // grab only the value from the response object
 
-      const sectionChuck = document.createElement("section"); // Create new section element
-      document.querySelector("main").append(sectionChuck); // Add the new section into body main of html document
+      const sectionChuck = document.getElementById("chuckFeedSection"); // Create new section element
 
       const divChuck = document.createElement("div"); // Create new div element nested on section element
       sectionChuck.appendChild(divChuck); // Add the new div into body main section
@@ -67,11 +66,10 @@ function addNewPost(){
     const textarea = document.getElementById("newPostContent")
     const onlyValue=textarea.value; // Récupère la saisie
 
-    const sectionChuck = document.createElement("section"); // Create new section element
-    document.querySelector("main").append(sectionChuck); // Add the new section into body main of html document
+    const sectionChuck = document.getElementById("newChuckJokeSection"); // Select section element
     
     const divChuck = document.createElement("div"); // Create new div element nested on section element
-    sectionChuck.appendChild(divChuck); // Add the new div into body main section
+    sectionChuck.prepend(divChuck); // Add the new div into body main section
     
     const h2Chuck = document.createElement("h2"); // Create new h2 element nested on section div element
     h2Chuck.innerText = "Chuck Norris Joke Feed";
