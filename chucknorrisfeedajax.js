@@ -61,3 +61,24 @@ $(document).ready(function () {
       }
     });
 });
+
+function addNewPost(){
+    
+    const textarea = document.getElementById("newPostContent")
+    const onlyValue=textarea.value; // Récupère la saisie
+
+    const sectionChuck = document.createElement("section"); // Create new section element
+    document.querySelector("main").append(sectionChuck); // Add the new section into body main of html document
+    
+    const divChuck = document.createElement("div"); // Create new div element nested on section element
+    sectionChuck.appendChild(divChuck); // Add the new div into body main section
+    
+    const h2Chuck = document.createElement("h2"); // Create new h2 element nested on section div element
+    h2Chuck.innerText = "Chuck Norris Joke Feed";
+    divChuck.appendChild(h2Chuck); // Add the new h2 into body main section div
+
+    const paragrahChuck = document.createElement("p"); // Create new p element nested on section div
+    paragrahChuck.innerText = onlyValue;
+    divChuck.append(paragrahChuck); // Append p to body main section div
+  
+  }
