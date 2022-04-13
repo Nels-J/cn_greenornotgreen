@@ -17,21 +17,8 @@ $(document).ready(function () {
     // If request work then the code below will run - the server response is given to the done() as an object
 
     .done(function (response) {
-      const onlyValue = response.value; // grab only the value from the response object
-
-      const sectionChuck = document.createElement("section"); // Create new section element
-      document.querySelector("main").append(sectionChuck); // Add the new section into body main of html document
-
-      const divChuck = document.createElement("div"); // Create new div element nested on section element
-      sectionChuck.appendChild(divChuck); // Add the new div into body main section
-
-      const h2Chuck = document.createElement("h2"); // Create new h2 element nested on section div element
-      h2Chuck.innerText = "Chuck Norris Joke Feed";
-      divChuck.appendChild(h2Chuck); // Add the new h2 into body main section div
-
-      const paragrahChuck = document.createElement("p"); // Create new p element nested on section div
-      paragrahChuck.innerText = onlyValue;
-      divChuck.append(paragrahChuck); // Append p to body main section div
+      //const donnees = response.value
+      addNewPost(response, "api");
     })
 
     // In case the request fail - The error is passed to fail()
@@ -61,3 +48,34 @@ $(document).ready(function () {
       }
     });
 });
+
+const element = document.getElementById("addJokeBtn");
+element.addEventListener("click", function () {
+  const textarea = document.getElementById("newPostContent").value;
+  const objectValue = { value: textarea };
+  addNewPost(objectValue, "client");
+});
+
+function addNewPost(content, type) {
+  const onlyValue = content.value; // grab only the value from the response object
+  const divChuck = document.createElement("div"); // Create new div element nested on section element
+  const h2Chuck = document.createElement("h2"); // Create new h2 element nested on section div element
+  const paragrahChuck = document.createElement("p"); // Create new p element nested on section div
+
+  divChuck.appendChild(h2Chuck); // Add the new h2 into body main section div
+  h2Chuck.innerText = "Chuck Norris Joke Feed";
+
+  divChuck.append(paragrahChuck); // Append p to body main section div
+  paragrahChuck.innerText = onlyValue;
+
+  //Si appel client(navigateur) FAIRE
+  if (type === "client") {
+    sectionChuck = document.getElementById("newChuckJokeSection"); // Select section element
+    sectionChuck.prepend(divChuck); // Add the new div into body main section
+
+    // Si appel API alors FAIRE
+  } else if (type === "api") {
+    sectionChuck = document.getElementById("chuckFeedSection"); // Create new section element
+    sectionChuck.appendChild(divChuck); // Add the new div into body main section
+  }
+}
