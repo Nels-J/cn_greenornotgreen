@@ -7,3 +7,7 @@ div {
     justify-content: space-between;
 }
 
+#carousel {
+display: flex;
+justify-content: center;
+}

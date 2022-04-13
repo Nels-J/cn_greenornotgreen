@@ -10,6 +10,13 @@
       integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
       crossorigin="anonymous"
     ></script>
+    <!-- Fotorama from CDNJS, 19 KB -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+
     <title>Index Page</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
   </head>
@@ -22,9 +29,22 @@
     </header>
 
     <main>
-      <section id="Carrousel">
-        <div>
-          <p>Carrousel</p>
+      <section id="carousel">
+        <div
+          class="fotorama"
+          data-transition="slide"
+          data-loop="true"
+          data-autoplay="3000"
+          data-swipe="true"
+        >
+          <img src="https://s.fotorama.io/1.jpg" />
+          <img src="https://s.fotorama.io/2.jpg" />
+          <img src="https://s.fotorama.io/3.jpg" />
+          <img src="https://s.fotorama.io/4.jpg" />
+          <img src="https://s.fotorama.io/5.jpg" />
+          <img src="https://s.fotorama.io/6.jpg" />
+          <img src="https://s.fotorama.io/7.jpg" />
+          <img src="https://s.fotorama.io/8.jpg" />
         </div>
       </section>
 
